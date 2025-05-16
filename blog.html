@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Y</title>
+  <style>
+    /* Estilização para modo escuro */
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      font-family: "cambria";
+    }
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #fff;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    /* Seção da postagem */
+    .post {
+      background-color: #1f1f1f;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .post h2 {
+      margin-top: 0;
+    }
+    /* Formulário de comentários */
+    .comment-form {
+      background-color: #1f1f1f;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .comment-form form {
+      display: flex;
+      flex-direction: column;
+    }
+    .comment-form label {
+      margin: 10px 0 5px;
+    }
+    .comment-form input[type="text"],
+    .comment-form input[type="email"],
+    .comment-form textarea {
+      padding: 10px;
+      border: 1px solid #333;
+      border-radius: 3px;
+      background-color: #333;
+      color: #e0e0e0;
+    }
+    .comment-form input[type="submit"] {
+      width: 200px;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 3px;
+      background-color: #6200ee;
+      color: #fff;
+      cursor: pointer;
+      align-self: center;
+    }
+    .comment-form input[type="submit"]:hover {
+      background-color: #3700b3;
+    }
+    /* Seção de comentários */
+    .comments {
+      background-color: #1f1f1f;
+      border-radius: 5px;
+      padding: 20px;
+    }
+    .comments h2 {
+      margin-top: 0;
+    }
+    .comment {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+    }
+    .comment h3 {
+      margin: 0 0 5px;
+      font-size: 1.1em;
+    }
+    .comment p {
+      margin: 0;
+    }
+
+    /* Botão de alternância de tema */
+    #toggle-theme {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #toggle-theme:hover {
+      background-color: #0056b3;
+    }
+
+    /* Tema claro */
+    body.light-mode {
+      background-color: #f5f5f5;
+      color: #121212;
+    }
+    body.light-mode .comment-form,
+    body.light-mode .post,
+    body.light-mode .comments {
+      background-color: #fff;
+      color: #333;
+    }
+    body.light-mode input[type="text"],
+    body.light-mode input[type="email"],
+    body.light-mode textarea {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho com título do blog -->
+  <header>
+    <h1>Blogram</h1>
+  </header>
+
+  <main>
+    <!-- Seção de postagem -->
+    <article class="post">
+        <h1> casé_tv (2 hours ago)</h1>
+        <h2>É CAMPEÃO PO4@%!</h2>
+      <p>
+        APÓS 2 ANOS NA SECA O MENGÃO VOLTOU COM TUDOOO! FLAMENGO VENCE FLUMINENSE POR 2X1 NO PLACAR AGREGADO, É O MALVADEZA, NÃO TEM COMO!! 
+    </p>
+    </article>
+
+    <!-- Formulário de comentários -->
+    <section class="comment-form">
+      <h2>Deixe um Comentário</h2>
+      <form id="comment-form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="comentario">Comentário:</label>
+        <textarea id="comentario" name="comentario" rows="4" required></textarea>
+
+        <input type="submit" value="Enviar Comentário">
+      </form>
+    </section>
+
+    <!-- Seção para exibir os comentários enviados -->
+    <section class="comments" id="comments-section">
+      <h2>Comentários</h2>
+      <div class="comment">
+        <h3>Jaokkk</h3>
+        <p>É o Filipismo, nao tem jeito!</p>
+      </div>
+      <div class="comment">
+        <h3>Mariaxx</h3>
+        <p>ISSO AKI É FLAMENGO!!!</p>
+      </div>
+    </section>
+
+    <!-- Botão de alternância de tema -->
+    <button id="toggle-theme">Alternar Tema</button>
+  </main>
+
+  <script>
+    // Alternância de tema claro/escuro
+    const toggleThemeButton = document.getElementById('toggle-theme');
+    toggleThemeButton.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode'); // Alterna a classe no body
+    });
+
+    // Função para adicionar comentários dinamicamente
+    const commentForm = document.getElementById('comment-form');
+    const commentsSection = document.getElementById('comments-section');
+
+    commentForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Evita o envio padrão do formulário
+
+      // Obtém os valores dos campos do formulário
+      const nome = document.getElementById('nome').value;
+      const comentario = document.getElementById('comentario').value;
+
+      // Cria um novo elemento de comentário
+      const newComment = document.createElement('div');
+      newComment.classList.add('comment');
+      newComment.innerHTML = `
+        <h3>${nome}</h3>
+        <p>${comentario}</p>
+      `;
+
+      // Adiciona o novo comentário à seção de comentários
+      commentsSection.appendChild(newComment);
+
+      // Limpa os campos do formulário
+      commentForm.reset();
+    });
+  </script>
+</body>
+</html>
