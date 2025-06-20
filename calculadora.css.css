@@ -1,0 +1,225 @@
+/* styles.css */
+
+/* Definição de variáveis CSS para cores e fontes */
+:root {
+    --primary-color: #3498db; /* Azul vibrante */
+    --secondary-color: #2c3e50; /* Azul escuro quase preto */
+    --accent-color: #e74c3c; /* Vermelho para erros */
+    --text-color: #333;
+    --bg-color: #ecf0f1; /* Cinza claro */
+    --card-bg: #ffffff;
+    --border-color: #ddd;
+    --font-family: 'Arial', sans-serif;
+}
+
+/* Reset básico e configurações globais */
+* {
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura do elemento */
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Organiza o layout em coluna */
+    min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 1.5em 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+/* Seção principal */
+main {
+    flex-grow: 1; /* Permite que o main ocupe o espaço restante */
+    padding: 2em;
+    display: flex;
+    flex-direction: column; /* Organiza as seções em coluna */
+    align-items: center; /* Centraliza as seções horizontalmente */
+    gap: 2em; /* Espaço entre as seções */
+}
+
+/* Estilo para cartões/seções */
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px; /* Limita a largura máxima dos cartões */
+    text-align: center;
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-size: 1.8em;
+}
+
+/* Estilo para grupos de formulário (label + input) */
+.form-group {
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+/* Botão de submissão */
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Ocupa a largura total do container */
+}
+
+button:hover {
+    background-color: #2980b9; /* Um tom mais escuro de azul ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Resultado */
+#resultado {
+    margin-top: 2em;
+    padding: 1.5em;
+    text-align: center;
+    border-top: 3px solid var(--primary-color); /* Adiciona uma borda superior para destacar */
+}
+
+#resultado h3 {
+    margin: 0 0 0.5em;
+    color: var(--primary-color);
+}
+
+#resultado p {
+    margin: 0.5em 0;
+    font-size: 1.1em;
+}
+
+/* Mensagens de feedback (erro) */
+.message {
+    padding: 0.8em;
+    margin-top: 1em;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: none; /* Escondido por padrão */
+}
+
+.message.error {
+    background-color: #ffe0e0;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+/* Tabela de Classificação */
+#tabela-imc table {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaçamento entre as bordas das células */
+    margin-top: 1em;
+}
+
+#tabela-imc th,
+#tabela-imc td {
+    border: 1px solid var(--border-color);
+    padding: 0.8em;
+    text-align: left;
+}
+
+#tabela-imc th {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+}
+
+#tabela-imc tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundo mais claro para linhas pares */
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-align: center;
+    padding: 1.5em 0;
+    margin-top: auto; /* Empurra o rodapé para o final da página */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    body {
+        font-size: 90%; /* Reduz a fonte base em telas menores */
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    main {
+        padding: 1em; /* Menor padding nas laterais */
+    }
+
+    .card {
+        padding: 1em;
+    }
+
+    button {
+        padding: 0.7em 1.2em;
+        font-size: 1em;
+    }
+
+    #resultado, #tabela-imc {
+        margin-top: 1.5em;
+    }
+}
+
+@media (max-width: 400px) {
+    .form-group input,
+    button {
+        font-size: 0.95em;
+    }
+}
